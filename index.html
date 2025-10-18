@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bat Mitzvá – Lucía y Candela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --c1:#e6f6ff; --c2:#cfeeff; --c3:#a8e0ff; --c4:#76c7ff; --c5:#2d8cff;
+      --ink:#000000; --white:#fff; --glass:rgba(255,255,255,.18); --glass-stroke:rgba(255,255,255,.35);
+      --accent:#ff5cc8; --shadow:0 10px 30px rgba(13,54,99,.20);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Helvetica Neue",sans-serif; color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, var(--c2), transparent 60%),
+        radial-gradient(1000px 500px at 90% 20%, var(--c3), transparent 60%),
+        radial-gradient(1200px 800px at 50% 100%, var(--c4), transparent 60%),
+        linear-gradient(180deg, var(--c1), var(--c2));
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    section{padding:72px 0;position:relative}
+    .center{text-align:center}
+    .glass{
+      background:var(--glass); border:1px solid var(--glass-stroke);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow:var(--shadow); border-radius:24px;
+    }
+    /* Sparkles */
+    .sparkle{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .sparkle i{position:absolute;width:10px;height:10px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,0) 70%);
+      opacity:.8; filter:blur(.3px); animation:float 10s linear infinite}
+    @keyframes float{
+      0%{transform:translateY(110vh) scale(.6) rotate(0deg);opacity:0}
+      10%{opacity:.9} 100%{transform:translateY(-10vh) scale(1) rotate(180deg);opacity:0}
+    }
+    /* Inicio */
+    .hero{min-height:70vh;display:grid;place-items:center}
+    .badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.28);border:1px solid var(--glass-stroke);
+      padding:.5rem .9rem;border-radius:999px;font-weight:700;letter-spacing:.06em}
+    .title{
+      font-weight:900;
+      font-size:clamp(38px,6.5vw,82px);
+      line-height:1;
+      color:#000000;
+      /* text-shadow:0 6px 30px rgba(45,140,255,.35); */
+      margin:.5rem 0 .7rem;
+      /* mix-blend-mode:screen */
+      text-align:center;
+      position:relative;
+    }
+    /* Estructura del título estilo referencia */
+    .title-name{ display:block; font-weight:900; letter-spacing:.02em; line-height:.9; margin:0 0 .35rem; font-size:clamp(60px,10vw,140px);}
+    .title-sub{ display:block; font-weight:600; letter-spacing:.22em; text-transform:uppercase; opacity:.9; margin:.15rem 0; font-size:clamp(14px,2vw,22px);}
+    .title-sub2{ display:block; font-weight:700; letter-spacing:.24em; text-transform:uppercase; margin:.1rem 0 0; font-size:clamp(18px,2.6vw,28px);}
+    @media (max-width:560px){ .title-name{ font-size:clamp(44px,14vw,84px);}}
+    .title-stars{position:absolute; inset:-10px; pointer-events:none; display:block; z-index:1}
+    .title span{position:relative; z-index:2}
+    .title .pink{color:#000000;text-shadow:none}
+    .title-name,.title-sub,.title-sub2{
+      color:#ffffff;
+      text-shadow:
+        0 0 2px #00b7ff,
+        0 0 6px #00b7ff,
+        0 0 12px rgba(0,183,255,0.6);
+      -webkit-text-stroke: 1px #0098ff;
+    }
+    @supports not (-webkit-text-stroke: 1px #0098ff) {
+      .title-name,.title-sub,.title-sub2 {
+        border: 1px solid #0098ff;
+      }
+    }
+    .subtitle{
+      margin:.2rem 0 1rem;
+      text-align:center;
+      font-weight:600;
+      color:#0b1b2b;
+      font-size:clamp(18px,2.2vw,24px);
+      letter-spacing:.04em;
+      text-shadow:0 1px 0 #ffffff, 0 0 14px rgba(0,152,255,.08);
+    }
+    .subtitle-wrap{display:flex; align-items:center; justify-content:center; gap:14px; margin-top:6px}
+    .subtitle-wrap .line{height:1.5px; width:min(18vw,160px); background:linear-gradient(90deg, transparent, #9fd8ff 30%, #0098ff 50%, #9fd8ff 70%, transparent); opacity:.65}
+    .pill{display:inline-block;padding:14px 22px;border-radius:999px;font-weight:700;text-decoration:none;color:#000000;
+      background:linear-gradient(180deg,#fff,#eaf6ff);border:1px solid #d6eaff;transition:transform .15s ease,box-shadow .15s ease;
+      box-shadow:0 8px 20px rgba(13,54,99,.15)}
+    .pill:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(13,54,99,.22)}
+    /* Cuándo */
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .cd-item{padding:18px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.35));
+      border:1px solid var(--glass-stroke)}
+    .cd-num{font-size:clamp(38px,6vw,72px);font-weight:900;color:#000000;letter-spacing:.02em}
+    .cd-lbl{font-size:12px;letter-spacing:.2em;opacity:.75;text-transform:uppercase;font-weight:700}
+    /* Lugar & Confirmación */
+    h2.section-title{font-size:clamp(28px,4.5vw,48px);margin:0 0 16px;color:#000000;text-align:center}
+    .lead{margin:.2rem 0 1rem;text-align:center}
+    .panel{padding:36px;margin-top:18px}
+    footer{padding:50px 20px 70px;text-align:center;color:#000000;opacity:.8;font-size:14px}
+    @media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body>
+
+  <!-- BRILLOS -->
+  <div class="sparkle" aria-hidden="true" id="sparkles"></div>
+
+  <!-- Defs SVG para estrellitas -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden">
+    <defs>
+      <!-- brillo suave -->
+      <filter id="star-glow">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <!-- símbolo de estrella tipo “flare” -->
+      <symbol id="star" viewBox="0 0 64 64">
+        <path fill="#ffffff" d="M32 0c1.3 9.5 6 20 12 26s16.5 10 20 11c-3.5 1-14 5-20 11s-10.7 16.5-12 26c-1.3-9.5-6-20-12-26S3.5 38 0 37c3.5-1 14-5 20-11S30.7 9.5 32 0z"/>
+        <circle cx="32" cy="32" r="3" fill="#ffffff" opacity="0.9"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- INICIO -->
+  <section id="inicio" class="hero">
+    <div class="wrap center">
+      <!-- <span class="badge">INVITACIÓN</span> -->
+      <h1 class="title">
+        <span class="title-name" id="girls">LUCÍA Y CANDE</span>
+        <span class="title-sub">TE INVITAMOS A NUESTRO</span>
+        <span class="title-sub2">BAT MITZVÁ</span>
+        <span class="title-stars" id="titleStars" aria-hidden="true"></span>
+      </h1>
+      <div class="subtitle-wrap">
+        <span class="line"></span>
+        <p class="subtitle">¡Acompáñanos en este día tan especial!</p>
+        <span class="line"></span>
+      </div>
+      <div style="margin-top:22px">
+        <a class="pill" href="#cuando">Ver “Cuándo”</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  // Estrellitas alrededor del título
+  (function(){
+    const container = document.getElementById('titleStars');
+    if(!container) return;
+
+    const STAR_COUNT = 16;
+    const area = container.getBoundingClientRect();
+    for(let i=0;i<STAR_COUNT;i++){
+      const use = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      use.setAttribute('viewBox','0 0 64 64');
+      use.setAttribute('width','24'); use.setAttribute('height','24');
+      use.classList.add('star', 's'+(1 + (i%3)));
+
+      // posición aleatoria dentro del área del título
+      use.style.position = 'absolute';
+      use.style.left = (Math.random()*95)+'%';
+      use.style.top  = (Math.random()*90)+'%';
+
+      // tiempos variados
+      use.style.animationDelay = (Math.random()*2.5)+'s';
+
+      // contenido
+      use.innerHTML = '<use href="#star" xlink:href="#star"></use>';
+
+      container.appendChild(use);
+    }
+  })();
+  </script>
+
+  <!-- CUÁNDO -->
+  <section id="cuando">
+    <div class="wrap">
+      <div class="glass panel">
+        <h2 class="section-title">Cuándo</h2>
+        <p class="lead" id="dateLine">Sábado 26 de Abril · 11:30 hs</p>
+        <div class="grid">
+          <div class="cd-item"><div class="cd-num" id="d">0</div><div class="cd-lbl">DÍAS</div></div>
+          <div class="cd-item"><div class="cd-num" id="h">0</div><div class="cd-lbl">HORAS</div></div>
+          <div class="cd-item"><div class="cd-num" id="m">0</div><div class="cd-lbl">MINUTOS</div></div>
+          <div class="cd-item"><div class="cd-num" id="s">0</div><div class="cd-lbl">SEGUNDOS</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUGAR -->
+  <section id="lugar">
+    <div class="wrap">
+      <div class="glass panel">
+        <h2 class="section-title">Lugar</h2>
+        <p class="lead" id="placeName">Complejo New Cubix · Ramos Mejía</p>
+        <p class="center">
+          <a class="pill" id="howToArrive" target="_blank" rel="noopener">Cómo llegar</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIRMAR -->
+  <section id="confirmar">
+    <div class="wrap">
+      <div class="glass panel center">
+        <h2 class="section-title">Confirmar asistencia</h2>
+        <p class="lead">Por favor, confirmá tu asistencia haciendo clic acá:</p>
+        <p><a class="pill" id="rsvpBtn" target="_blank" rel="noopener">CONFIRMAR</a></p>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    /* ========= EDITÁ ESTOS DATOS ========= */
+    const INVITE = {
+      girls: "Lucía y Candela",
+      // Fecha/hora (AÑO, MES-1, DÍA, HORA, MIN). Ej: 24/11/2025 11:30
+      eventDate: new Date(2025, 10, 24, 11, 30),
+      dateNice: "Lunes 24 de Noviembre · 11:30 hs",
+      placeName: "Victoria palace. Av. Juan Bautista Alberdi 2664",
+      mapsUrl: "https://maps.app.goo.gl/YvHpVyJoEYqzV85y8?g_st=",
+      rsvpUrl: "https://pepe123.com.ar"
+    };
+    /* ==================================== */
+
+    // Pintar textos y links
+    document.getElementById("girls").textContent = INVITE.girls;
+    document.getElementById("dateLine").textContent = INVITE.dateNice;
+    document.getElementById("placeName").textContent = INVITE.placeName;
+    const how = document.getElementById("howToArrive"); how.href = INVITE.mapsUrl;
+    const rsvp = document.getElementById("rsvpBtn"); rsvp.href = INVITE.rsvpUrl;
+
+    // Contador regresivo
+    const el = { d:document.getElementById('d'), h:document.getElementById('h'),
+                 m:document.getElementById('m'), s:document.getElementById('s') };
+    function tick(){
+      const now = Date.now();
+      const t = INVITE.eventDate.getTime() - now;
+      if(t <= 0){ el.d.textContent=0; el.h.textContent=0; el.m.textContent=0; el.s.textContent=0; return; }
+      const sec = Math.floor(t/1000);
+      const days = Math.floor(sec/86400);
+      const hrs  = Math.floor((sec%86400)/3600);
+      const mins = Math.floor((sec%3600)/60);
+      const s    = sec%60;
+      el.d.textContent = days;
+      el.h.textContent = String(hrs).padStart(2,'0');
+      el.m.textContent = String(mins).padStart(2,'0');
+      el.s.textContent = String(s).padStart(2,'0');
+    }
+    tick(); setInterval(tick, 1000);
+
+    // Sparkles
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // No animar si el usuario prefiere menos movimiento
+      console.warn('Animaciones reducidas por prefers-reduced-motion');
+    } else {
+      const container = document.getElementById('sparkles');
+      const N = 40;
+      for(let i=0;i<N;i++){
+        const dot = document.createElement('i');
+        dot.style.left = Math.random()*100 + 'vw';
+        dot.style.animationDelay = (Math.random()*10)+'s';
+        dot.style.animationDuration = (8 + Math.random()*8)+'s';
+        dot.style.opacity = 0.5 + Math.random()*0.5;
+        dot.style.transform = `translateY(${(50+Math.random()*80)}vh)`;
+        container.appendChild(dot);
+      }
+    }
+  </script>
+</body>
+</html>
